@@ -1,14 +1,7 @@
-// Student Task Manager - Tutorial Steps 1 to 6
-// Step 1: Console output       Step 2: Variables, input, constants
-// Step 3: if / switch          Step 4: Lists and loops
-// Step 5: Methods              Step 6: Enums and final integration
 
-// ---------- Constants (Step 2 and Step 6) ----------
 const string AppName = "Student Task Manager";
-const int MaxTasks = 10; // maximum tasks allowed per day / in the list
+const int MaxTasks = 10;
 
-// ---------- Step 1: Hello, Console ----------
-// TODO: edit the three personal lines below so they are true for you.
 Console.WriteLine(AppName);
 Console.WriteLine("====================");
 Console.WriteLine("Welcome to the application!");
@@ -16,13 +9,11 @@ Console.WriteLine("Name: Ahmed");
 Console.WriteLine("Favorite programming language: C#");
 Console.WriteLine("Why I want to learn .NET: to build real applications for my Applied Informatics studies.");
 
-// Investigate: Write() vs WriteLine()
 Console.Write("Write() stays on the same line... ");
 Console.Write("see?");
 Console.WriteLine();
 Console.WriteLine("WriteLine() moves to the next line after printing.");
 
-// ---------- Step 2: Variables, input, output ----------
 Console.WriteLine();
 string studentName = ReadText("Enter your name: ");
 int age = ReadInt("Enter your age: ");
@@ -41,7 +32,7 @@ Console.WriteLine($"You have {availableHours} hours available.");
 Console.WriteLine($"Application: {AppName}");
 Console.WriteLine($"Maximum tasks allowed per day: {MaxTasks}");
 
-// ---------- Step 3: Conditions ----------
+
 if (taskGoal > MaxTasks)
 {
     Console.WriteLine($"Your goal is above the maximum of {MaxTasks}. Be realistic!");
@@ -62,7 +53,7 @@ else
     Console.WriteLine("Great progress!");
 }
 
-// ---------- Steps 4, 5 and 6: Main application loop ----------
+
 List<string> tasks = new List<string>();
 bool running = true;
 
@@ -102,7 +93,7 @@ while (running)
     }
 }
 
-// ======================= Methods (Step 5) =======================
+
 
 void ShowTitle()
 {
@@ -186,7 +177,7 @@ void RemoveTask(List<string> taskList)
     ShowTasks(taskList);
     int number = ReadInt("Task to remove: ");
 
-    // The user sees numbers starting at 1, but list indexes start at 0.
+   
     if (number < 1 || number > taskList.Count)
     {
         ShowMessage("Invalid task number.");
@@ -204,9 +195,6 @@ void ShowTaskCount(List<string> taskList)
     Console.WriteLine($"Maximum allowed: {MaxTasks}");
     Console.WriteLine($"Remaining capacity: {MaxTasks - count}");
 }
-
-// ======================= Safe input helpers =======================
-// TryParse is used instead of Parse so bad input never crashes the program.
 
 string ReadText(string prompt)
 {
@@ -232,7 +220,7 @@ double ReadDouble(string prompt)
     while (true)
     {
         Console.Write(prompt);
-        // Accept both "2.5" and "2,5" regardless of the computer's regional settings.
+    
         string text = (Console.ReadLine() ?? "").Replace(',', '.');
         if (double.TryParse(text, System.Globalization.NumberStyles.Float,
                             System.Globalization.CultureInfo.InvariantCulture, out double value))
@@ -267,9 +255,6 @@ TaskPriority ReadPriority()
         Console.WriteLine("Please choose 1, 2 or 3.");
     }
 }
-
-// ======================= Types (Step 6) =======================
-// Type declarations must go after all top-level statements.
 
 enum TaskPriority
 {
